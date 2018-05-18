@@ -4,18 +4,24 @@
     padding: 5px;
 }
 
+#location {
+	margin: auto;
+	width: 50%;
+	background: #c8daf7;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
 #output {
 	margin: auto;
 	width: 50%;
+	background: #8fb4ef;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 #weatherData {
 	line-height: 40px;
-	/*background: #0000FF;*/
-}
-
-#temperatureScale {
-	/*background: #00FF00;*/
 }
 
 #weatherData img {

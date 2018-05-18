@@ -16,10 +16,10 @@
 				<h2>Weather in location</h2>
 			</div>
 			<div id="output">
-				<div id="weatherData">
-					<span id="temperature">25.0</span><span id="description"><img width="40" height="40">imgDescription</span>
+				<div id="weatherData" style="visibility: hidden">
+					<span id="temperature">25.0</span><span id="description"><img width="40" height="40">weatherDescription</span>
 				</div>
-				<div id="temperatureScale">
+				<div id="temperatureScale" style="visibility: hidden">
 					<span id="temperatureCelsius">°C</span>
 					<input type="radio" name="temperatureScaleChange" value="C" checked="checked" onchange="scaleChange(this.value)">
 					<input type="radio" name="temperatureScaleChange" value="F" onchange="scaleChange(this.value)">
@@ -54,7 +54,8 @@
 					// Your code for handling the data you get from the API
 					return data.json();
 					}).then(function(json){
-					
+					document.getElementById("weatherData").style.visibility = "visible";
+					document.getElementById("temperatureScale").style.visibility = "visible";
 					var htmllocation = "";
 					var htmlforecast = "";
 					console.log(json);
