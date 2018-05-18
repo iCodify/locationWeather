@@ -50,8 +50,11 @@
 				var link = "https://api.openweathermap.org/data/2.5/weather?id=524901&APPID=1a51ea13141bd21ee0496845f6900266"+lat_lng;
 				console.log(link);
 			
-				document.addEventListener("DOMContentLoaded", function(event) {
-					$.getJSON(link, function(json) {
+				fetch(link).then(function(data) {
+					// Your code for handling the data you get from the API
+					return data.json();
+					}).then(function(json){
+					
 					var htmllocation = "";
 					var htmlforecast = "";
 					console.log(json);
@@ -86,13 +89,16 @@
 
 					htmllocation += "<h2 align='center'>Weather "+cityStyle+", "+countryStyle+"</h2>";
 					document.getElementById("location").innerHTML = htmllocation;
-
-					htmlforecast += "<div class='col-sm-3 temperature' align='right'>"+tempCel+"</div><div class='quote col-sm-6' align='left'><img src='http://openweathermap.org/img/w/"+iconStyle+".png' width='40' height='40'>"+descriptionStyle+"</div><div class='col-sm-3'></div>";
-		
-					document.getElementById("forecast").innerHTML = htmlforecast;
-                });
+					
+					htmlforecast += "<span id='temperature'>"+tempCel+"</span><span id='description'><img src='http://openweathermap.org/img/w/"+iconStyle+".png' width='40' height='40'>"+descriptionStyle+"</span>";
+					document.getElementById("weatherData").innerHTML = htmlforecast;
+					
+					}).catch(function(error) {
+					console.log(error);
+					// This is where you run code if the server returns any errors
+					});
+			
 			});
-    });
 		</script>
     </body>
 </html>
